@@ -2,7 +2,7 @@ package com.cable.rest.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.cable.rest.entity.UserRole;
+import com.cable.rest.model.UserRole;
 
 
 

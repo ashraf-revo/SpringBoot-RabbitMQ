@@ -14,10 +14,10 @@ import com.cable.rest.dto.OrganizationDto;
 @Log4j
 public class ProjectController extends BaseController {
 	
-	@RequestMapping(value="/createOrganization",method=RequestMethod.POST)
-	public OrganizationDto  createOrganization(@RequestBody OrganizationDto reqObject){
+	@RequestMapping(value="/saveorganization",method=RequestMethod.POST)
+	public OrganizationDto  saveOrganization(@RequestBody OrganizationDto reqObject){
 		log.info("Ticket Creation Controler");
-		return (OrganizationDto) sendtoMQ(reqObject, "createOrganization", "projectService");
+		return (OrganizationDto) sendtoMQ(reqObject, "saveOrganization", "projectService");
 	}
 	
 }

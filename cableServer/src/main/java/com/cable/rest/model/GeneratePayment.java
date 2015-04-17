@@ -1,4 +1,4 @@
-package com.cable.rest.entity;
+package com.cable.rest.model;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -63,9 +63,7 @@ private static final long serialVersionUID = 1L;
 	@Getter	@Setter	
 	private ConnectionAccount connectionAccount;
 	
-	@Column(name="time_stamp", nullable=true,columnDefinition="timestamp default current_timestamp on update current_timestamp")
-	@Getter	@Setter	
-	private Date timeStamp ;
+	
 	
 	
 	

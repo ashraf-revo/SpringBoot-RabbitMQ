@@ -1,4 +1,4 @@
-package com.cable.rest.entity;
+package com.cable.rest.model;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -75,9 +75,7 @@ public class Project extends Audit implements Serializable{
 	@Getter	@Setter	
 	private int paymentDueDate;
 	
-	@Column(name="time_stamp", nullable=true,columnDefinition="timestamp default current_timestamp on update current_timestamp")
-	@Getter	@Setter	
-	private Date timeStamp ;
+	
 	
 	
 	

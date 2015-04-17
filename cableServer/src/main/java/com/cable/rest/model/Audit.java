@@ -1,4 +1,4 @@
-package com.cable.rest.entity;
+package com.cable.rest.model;
 
 import java.io.Serializable;
 import java.util.Date;
