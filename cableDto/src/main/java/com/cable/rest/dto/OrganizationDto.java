@@ -13,10 +13,10 @@ public class OrganizationDto implements Serializable  {
 	private static final long serialVersionUID = 1L;
 	
 	@Getter	@Setter	
-	Long orgId;
+	private Long orgId;
 	
 	@Getter	@Setter	
-	String orgName;
+	private String orgName;
 	
 	@Getter	@Setter	
 	private String orgToken;

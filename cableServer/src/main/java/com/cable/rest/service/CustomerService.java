@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.cable.rest.dto.CustomerDto;
 import com.cable.rest.model.Customer;
 import com.cable.rest.repository.CustomerJPARepo;
-import com.cable.rest.search.CustomerSearch;
+import com.cable.rest.search.UserSearch;
 import com.cable.rest.utils.ModelEntityMapper;
 
 
@@ -35,7 +35,7 @@ public class CustomerService {
 	
 	}
 	
-	public List<CustomerDto> getCustomer(CustomerSearch search) {
+	public List<CustomerDto> getCustomer(UserSearch search) {
 		return null;
 	}
 	

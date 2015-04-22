@@ -1,5 +1,15 @@
 package com.cable.rest.search;
 
-public class UserSearch {
+import lombok.Getter;
+import lombok.Setter;
 
+public class UserSearch {
+	
+	@Getter	@Setter	
+	private Long userId;
+	
+	@Getter	@Setter	
+	private Long roleId;
+	
+	
 }

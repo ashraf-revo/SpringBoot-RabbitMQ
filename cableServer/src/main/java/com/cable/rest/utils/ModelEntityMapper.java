@@ -16,6 +16,7 @@ public class ModelEntityMapper {
 			if(modelObject==null)return null;
 			
 			ModelMapper modelMapper = new ModelMapper();
+			 modelMapper.getConfiguration().setFieldMatchingEnabled(true);
 			return modelMapper.map(modelObject, entityName);
 			
 		}

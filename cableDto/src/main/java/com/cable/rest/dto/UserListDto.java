@@ -1,6 +1,7 @@
 package com.cable.rest.dto;
 
 import java.io.Serializable;
+import java.util.List;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -8,20 +9,14 @@ import lombok.Setter;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class StreetDto implements Serializable {
-
+public class UserListDto implements Serializable  {
+	
 	private static final long serialVersionUID = 1L;
 	
 	@Getter	@Setter	
-	private Long streetId;
+	private List<UserDto> userlist;
 	
 	@Getter	@Setter	
-	private String streetName;
-	
-	@Getter	@Setter	
-	private AreaDto area;
-	
-	@Getter	@Setter	
-	private Boolean active;
+	private List<RoleDto> roleDetail;
 
 }
