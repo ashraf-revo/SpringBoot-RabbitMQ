@@ -8,5 +8,7 @@ import com.cable.rest.model.User;
 
 
 public interface UserJPARepo extends JpaRepository< User, Long>{
+	
+	public User findByUserName(String userName);
 
 }

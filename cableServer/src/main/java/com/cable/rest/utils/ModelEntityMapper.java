@@ -1,16 +1,20 @@
 package com.cable.rest.utils;
 
 
+import java.util.List;
+
 import lombok.extern.log4j.Log4j;
 
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
+import org.springframework.util.CollectionUtils;
+
+
 
 @Log4j
 public class ModelEntityMapper {
 	
-	
-	
-	public static Object converModelToEntity(Object modelObject,Class entityName){
+	public static Object converObjectToPoJo(Object modelObject,Class entityName){
 		try{
 			
 			if(modelObject==null)return null;
@@ -27,20 +31,28 @@ public class ModelEntityMapper {
 	
 	}
 	
-	public static Object converEntityToModel(Object entityObject,Class modelName){
+	
+	public static <T> List<?> convertListToCollection(List<T> list){
 		try{
-			
-			if(entityObject==null)return null;
-			
+			if(CollectionUtils.isEmpty(list))
+				return null;
 			ModelMapper modelMapper = new ModelMapper();
-			return modelMapper.map(entityObject, modelName);
-			
+			modelMapper.getConfiguration().setFieldMatchingEnabled(true);
+			return modelMapper.map(list, new TypeToken<List<?>>() {}.getType());
+
 		}
 		catch(Exception e){
-			log.error("Error while Conver EntityToModel "+modelName.getName(), e);
+			log.error("Error while Conver ListToCollection ", e);
 			return null;
 		}
-	
+		
 	}
+
+	
+	
+	
+	
+	
+	
 
 }

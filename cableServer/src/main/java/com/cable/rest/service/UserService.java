@@ -43,9 +43,17 @@ public class UserService {
 	@Autowired
 	UserRoleJPARepo userRoleRepo;
 	
-	public boolean exitUser(){
-		return false;
-		
+	public UserDto exitUser(UserDto userObject){
+		try{
+			User entityObject= userRepo.findByUserName(userObject.getUserName());
+			UserDto userDto=(UserDto) ModelEntityMapper.converObjectToPoJo(entityObject, UserDto.class);
+			
+			return userDto;
+			
+		}
+		catch(Exception e){
+			return null;
+		}	
 	}
 	
 	
@@ -53,7 +61,7 @@ public class UserService {
 	@Transactional
 	public UserDto saveUser(UserDto userObject){
 		try{
-			User userEntity=(User) ModelEntityMapper.converModelToEntity(userObject, User.class);
+			User userEntity=(User) ModelEntityMapper.converObjectToPoJo(userObject, User.class);
 			userEntity=userRepo.save(userEntity);
 			
 			if(userEntity.getUserId()==null){
@@ -64,7 +72,7 @@ public class UserService {
 			
 			for(UserRoleDto roleUser : userObject.getUserRoles()){
 				roleUser.setUser(userObject);
-				UserRole userRoleEntity=(UserRole) ModelEntityMapper.converModelToEntity(roleUser, UserRole.class);
+				UserRole userRoleEntity=(UserRole) ModelEntityMapper.converObjectToPoJo(roleUser, UserRole.class);
 				
 				userRoleRepo.save(userRoleEntity);
 			}
@@ -96,7 +104,7 @@ public class UserService {
 			List<User> list=criteria.list();
 			
 			for( User entityObject: list){
-				UserDto userDto=(UserDto) ModelEntityMapper.converEntityToModel(entityObject, UserDto.class);
+				UserDto userDto=(UserDto) ModelEntityMapper.converObjectToPoJo(entityObject, UserDto.class);
 				userList.add(userDto);
 			}
 			result.setUserlist(userList);

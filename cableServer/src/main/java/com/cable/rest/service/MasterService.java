@@ -54,7 +54,7 @@ public class MasterService {
 	public ZipCodeDto saveZipCode(ZipCodeDto Object) {
 		try{
 			
-			ZipCode zipCodeEntity=(ZipCode) ModelEntityMapper.converModelToEntity(Object, ZipCode.class);
+			ZipCode zipCodeEntity=(ZipCode) ModelEntityMapper.converObjectToPoJo(Object, ZipCode.class);
 			zipCodeRepo.saveAndFlush(zipCodeEntity);
 			Object.setZipCode(zipCodeEntity.getZipCode());
 		}
@@ -81,10 +81,12 @@ public class MasterService {
 			
 			List<ZipCode> list=criteria.list();
 			
-			for( ZipCode entityObject: list){
-				ZipCodeDto zipcodeDto=(ZipCodeDto) ModelEntityMapper.converEntityToModel(entityObject, ZipCodeDto.class);
+			zipcodeList = (List<ZipCodeDto>) ModelEntityMapper.convertListToCollection(list);
+			
+			/*for( ZipCode entityObject: list){
+				ZipCodeDto zipcodeDto=(ZipCodeDto) ModelEntityMapper.converObjectToPoJo(entityObject, ZipCodeDto.class);
 				zipcodeList.add(zipcodeDto);
-			}
+			}*/
 			result.setZipCodeList(zipcodeList);
 			
 			return result;
@@ -109,7 +111,7 @@ public class MasterService {
 	@Transactional
 	public AreaDto saveArea(AreaDto Object) {
 		try{
-			Area areaEntity=(Area) ModelEntityMapper.converModelToEntity(Object, Area.class);
+			Area areaEntity=(Area) ModelEntityMapper.converObjectToPoJo(Object, Area.class);
 			areaRepo.save(areaEntity);
 			Object.setAreaId(areaEntity.getAreaId());
 			return Object;
@@ -138,7 +140,7 @@ public class MasterService {
 			List<Area> list=criteria.list();
 			
 			for( Area entityObject: list){
-				AreaDto areaDto=(AreaDto) ModelEntityMapper.converEntityToModel(entityObject, AreaDto.class);
+				AreaDto areaDto=(AreaDto) ModelEntityMapper.converObjectToPoJo(entityObject, AreaDto.class);
 				areaList.add(areaDto);
 			}
 			result.setAreaList(areaList);
@@ -166,7 +168,7 @@ public class MasterService {
 	@Transactional
 	public StreetDto saveStreet(StreetDto Object) {
 		try{
-			Street streetEntity=(Street) ModelEntityMapper.converModelToEntity(Object, Street.class);
+			Street streetEntity=(Street) ModelEntityMapper.converObjectToPoJo(Object, Street.class);
 			streetRepo.save(streetEntity);
 			Object.setStreetId(streetEntity.getStreetId());
 			return Object;
@@ -194,7 +196,7 @@ public class MasterService {
 			List<Street> list=criteria.list();
 			
 			for( Street entityObject: list){
-				StreetDto streetDto=(StreetDto) ModelEntityMapper.converEntityToModel(entityObject, StreetDto.class);
+				StreetDto streetDto=(StreetDto) ModelEntityMapper.converObjectToPoJo(entityObject, StreetDto.class);
 				streetList.add(streetDto);
 			}
 			result.setStreetList(streetList);

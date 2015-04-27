@@ -17,6 +17,11 @@ import com.cable.rest.search.UserSearch;
 @Log4j
 public class UserController extends BaseController {
 	
+	@RequestMapping(value="/userexit",method=RequestMethod.POST)
+	public UserDto  exitUser(@RequestBody UserDto reqObject){
+		return (UserDto) sendtoMQ(reqObject, "exitUser", "userService");
+	}
+	
 	@RequestMapping(value="/saveuser",method=RequestMethod.POST)
 	public UserDto  saveUser(@RequestBody UserDto reqObject){
 		return (UserDto) sendtoMQ(reqObject, "saveUser", "userService");

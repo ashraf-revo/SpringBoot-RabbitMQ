@@ -43,7 +43,7 @@ public class ProjectService {
 	@Transactional
 	public OrganizationDto saveOrganization(OrganizationDto reqObject){
 		try{
-			Organization orgEntity=(Organization) ModelEntityMapper.converModelToEntity(reqObject, Organization.class);
+			Organization orgEntity=(Organization) ModelEntityMapper.converObjectToPoJo(reqObject, Organization.class);
 			
 			organizationJPARepo.saveAndFlush(orgEntity);
 			
@@ -83,7 +83,7 @@ public class ProjectService {
 			//List<OrganizationDto> list=criteria.setResultTransformer(Transformers.aliasToBean(OrganizationDto.class)).list();
 			
 			for( Organization orgObject: list){
-				OrganizationDto orgDto=(OrganizationDto) ModelEntityMapper.converEntityToModel(orgObject, OrganizationDto.class);
+				OrganizationDto orgDto=(OrganizationDto) ModelEntityMapper.converObjectToPoJo(orgObject, OrganizationDto.class);
 				orgDetails.add(orgDto);
 			}
 			
@@ -114,7 +114,7 @@ public class ProjectService {
 	@Transactional
 	public ProjectDto saveProject(ProjectDto Object) {
 		try{
-			Project projectEntity=(Project) ModelEntityMapper.converModelToEntity(Object, Project.class);
+			Project projectEntity=(Project) ModelEntityMapper.converObjectToPoJo(Object, Project.class);
 			projectJPARepo.saveAndFlush(projectEntity);
 			Object.setProjectId(projectEntity.getProjectId());
 		}
@@ -146,7 +146,7 @@ public class ProjectService {
 			List<Project> list=criteria.list();
 			
 			for( Project projectObject : list){
-				ProjectDto projectDto=(ProjectDto) ModelEntityMapper.converEntityToModel(projectObject, ProjectDto.class);
+				ProjectDto projectDto=(ProjectDto) ModelEntityMapper.converObjectToPoJo(projectObject, ProjectDto.class);
 				projectDetails.add(projectDto);
 			}
 			

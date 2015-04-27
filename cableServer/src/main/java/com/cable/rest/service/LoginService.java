@@ -55,7 +55,7 @@ public class LoginService {
 	@Transactional
 	public RoleDto saveRole(RoleDto Object){
 		try{
-			Role roleEntity=(Role) ModelEntityMapper.converModelToEntity(Object, Role.class);
+			Role roleEntity=(Role) ModelEntityMapper.converObjectToPoJo(Object, Role.class);
 			roleEntity=roleRepo.save(roleEntity);	
 			Object.setRoleId(roleEntity.getRoleId());
 			return Object;
@@ -83,7 +83,7 @@ public class LoginService {
 			List<Role> list=criteria.list();
 			
 			for( Role entityObject: list){
-				RoleDto roleDto=(RoleDto) ModelEntityMapper.converEntityToModel(entityObject, RoleDto.class);
+				RoleDto roleDto=(RoleDto) ModelEntityMapper.converObjectToPoJo(entityObject, RoleDto.class);
 				roleList.add(roleDto);
 			}
 			result.setRoleDetail(roleList);

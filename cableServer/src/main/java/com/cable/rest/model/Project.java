@@ -65,7 +65,7 @@ public class Project extends Audit implements Serializable{
 	
 	@Column(nullable=false)
 	@Getter	@Setter	
-	protected Boolean onlinePaymentFlag = false;
+	private Boolean onlinePaymentFlag = false;
 	
 	@Column(nullable=false)
 	@Getter	@Setter	

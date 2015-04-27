@@ -25,7 +25,7 @@ public class CustomerService {
 	@Transactional
 	public boolean saveCustomer(CustomerDto customerObject) {
 		try{
-			Customer customerEntity=(Customer) ModelEntityMapper.converModelToEntity(customerObject, Customer.class);
+			Customer customerEntity=(Customer) ModelEntityMapper.converObjectToPoJo(customerObject, Customer.class);
 			customerRepo.save(customerEntity);
 		}
 		catch(Exception e){
